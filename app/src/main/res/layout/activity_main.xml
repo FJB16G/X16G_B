@@ -16,11 +16,12 @@
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="348dp"
             app:srcCompat="@drawable/mom02" />
 
-        <Space android:layout_width="match_parent"
-            android:layout_height="25dip"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dip" />
 
         <Button
             android:id="@+id/button"
@@ -33,8 +34,9 @@
             android:textColor="@android:color/white" />
 
 
-        <Space android:layout_width="match_parent"
-            android:layout_height="25dip"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dip" />
 
         <Button
             android:id="@+id/button2"
@@ -45,6 +47,10 @@
             android:drawableBottom="@drawable/button_corners"
             android:gravity="center"
             android:text="               アカウント切替               " />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dip" />
 
     </LinearLayout>
 </FrameLayout>
