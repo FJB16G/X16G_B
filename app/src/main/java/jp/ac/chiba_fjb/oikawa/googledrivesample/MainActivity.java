@@ -10,7 +10,7 @@ import jp.ac.chiba_fjb.oikawa.googledrivesample.Libs.AppFinger;
 import jp.ac.chiba_fjb.oikawa.googledrivesample.Libs.GoogleDrive;
 import jp.ac.chiba_fjb.oikawa.googledrivesample.Libs.Permission;
 
-//hhttps://console.cloud.google.com/
+//https://console.cloud.google.com/
 //にアクセスして、GoogleDriveの有効化とフィンガーコードの登録を行う
 
 public class MainActivity extends AppCompatActivity {
