@@ -5,7 +5,7 @@
         <!-- ボタンの形状 -->
         <shape android:shape="rectangle">
             <!-- ボタンの色 -->
-            <solid android:color="#87ceeb"/>
+            <solid android:color="#0000cd"/>
             <!-- ボタンのグラデーション
 　　　　　　<gradient
                    android:startColor="#87ceeb"
