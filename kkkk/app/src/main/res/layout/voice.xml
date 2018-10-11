@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="773dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:paddingLeft="160dp"
+            android:paddingTop="25dp"
+            android:text="TextView"
+            tools:text="タイトル" />
+
+        <LinearLayout
+            android:layout_width="386dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/ic_launcher_round" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="97dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/ic_launcher_round" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="386dp"
+            android:layout_height="155dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="60dp" />
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="64dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="164dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="区分" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="メモ" />
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>
