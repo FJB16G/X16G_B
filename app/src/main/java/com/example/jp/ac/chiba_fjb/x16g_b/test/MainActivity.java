@@ -3,10 +3,9 @@ package com.example.jp.ac.chiba_fjb.x16g_b.test;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import java.util.ArrayList;
-import android.app.Activity;
+
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.RecognizerIntentTest);
 
         inpText = (EditText)findViewById(R.id.result_id);
         inpBtn = (Button)findViewById(R.id.speech_id);
