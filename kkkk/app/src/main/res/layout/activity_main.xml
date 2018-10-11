@@ -86,6 +86,9 @@
                     android:text="メモ" />
             </LinearLayout>
 
+
+
+            
         </LinearLayout>
 
     </LinearLayout>
