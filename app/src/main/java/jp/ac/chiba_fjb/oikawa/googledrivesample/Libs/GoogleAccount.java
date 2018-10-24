@@ -61,7 +61,7 @@ public class GoogleAccount {
         editor.putString(PREF_ACCOUNT_NAME, null);
         editor.apply();
         mAccountName = null;
-        //mCredential.setSelectedAccountName(null);
+        mCredential.setSelectedAccountName(null);
         mCredential.setSelectedAccount(null);
     }
     public void requestAccount(){
@@ -146,5 +146,8 @@ public class GoogleAccount {
     }
     protected void onError(){
 
+    }
+
+    public void disconnect() {
     }
 }
