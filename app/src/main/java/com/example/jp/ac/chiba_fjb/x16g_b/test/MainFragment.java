@@ -23,9 +23,6 @@ import android.widget.Button;
 public class MainFragment extends Fragment implements View.OnClickListener {
 
 
-
-
-
     public MainFragment() {
         // Required empty public constructor
 
@@ -46,11 +43,11 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 //インスタンスの取得
         Button home = view.findViewById(R.id.home);
         Button title =  view.findViewById(R.id.title);
-        Button Top =  view.findViewById(R.id.Top);
+
 
         //イベントの設定
         home.setOnClickListener(this);
-       Top.setOnClickListener(this);
+
         title.setOnClickListener(this);
 
 
@@ -80,15 +77,15 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    public void changeFragment(Class c) {
-        changeFragment(R.id.fragment_sub, c, null);
+    public Fragment changeFragment(Class c) {
+        return changeFragment(R.id.fragment_sub, c, null);
     }
 
-    public void changeFragment(int id, Class c) {
-        changeFragment(id, c, null);
+    public Fragment changeFragment(int id, Class c) {
+        return changeFragment(id, c, null);
     }
 
-    public void changeFragment(int id, Class c, Bundle budle) {
+    public Fragment changeFragment(int id, Class c, Bundle budle) {
         try {
             Fragment f = (Fragment) c.newInstance();
             if (budle != null)
@@ -97,11 +94,13 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                 f.setArguments(new Bundle());
 
             FragmentTransaction ft = getChildFragmentManager().beginTransaction();
-            ft.replace(id, f);
+            ft.replace(id, f,c.getName());
             ft.addToBackStack(null);
             ft.commit();
+            return f;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
     }
 
@@ -109,16 +108,21 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
 
 
-        if(v.getId() == R.id.home)
-                    changeFragment(HomeFragment.class);
+        if(v.getId() == R.id.home) {
+            HomeFragment f = (HomeFragment)changeFragment(HomeFragment.class);
 
-        else if(v.getId() == R.id.settei)
-                    changeFragment(KarendaFragment.class);
+        }
+
+
 
         else if(v.getId() == R.id.title)
                     changeFragment(titleFragment.class);
-        else if(v.getId() == R.id.Top)
-                    changeFragment(TopFragment.class);
+
+
+
+
+
+
 
 
     }

@@ -36,9 +36,7 @@ public class TopFragment  extends Fragment implements View.OnClickListener{
         public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
 
-            TextView a = view.findViewById(R.id.Top);
 
-            view.findViewById(R.id.Top);
         }
 
 

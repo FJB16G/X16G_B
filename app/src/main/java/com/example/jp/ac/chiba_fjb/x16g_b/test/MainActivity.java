@@ -1,6 +1,7 @@
 package com.example.jp.ac.chiba_fjb.x16g_b.test;
+
 import android.os.Bundle;
-import android.os.Handler;
+
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -8,20 +9,31 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.view.Window;
+
 import android.widget.TextView;
 
+import android.os.Bundle;
+import android.os.Environment;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.io.File;
+import java.util.ArrayList;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Timer;
+import java.util.TimerTask;
+
+
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mTextMessage;
-    private Handler mHandler;
-    private Timer mTimer;
-    // 時刻表示のフォーマット
-    private static SimpleDateFormat mSimpleDataFormat = new SimpleDateFormat("yyyy年　MM月dd日　HH:mm:ss");
+
+
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -44,71 +56,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        changeFragment(MainFragment.class);
-
-//インスタンスの取得
-        Button top= (Button)findViewById(R.id.button2);
-        findViewById(R.id.button2).setOnClickListener(this);
-
-        //イベントの設定
-        top.setOnClickListener(this);
 
 
 
 
-//
-//        Button b4= (Button)findViewById(R.id.top);
-//        b4.setOnClickListener(this);
-//        findViewById(R.id.top).setOnClickListener(this);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            setContentView(R.layout.activity_main);
 
 
-//      mHandler = new Handler();
-//        mTimer = new Timer();
-//
-//       // 一秒ごとに定期的に実行します。
-//       mTimer.schedule(new TimerTask() {
-//            @Override
-//           public void run() {
-//                mHandler.post(new Runnable() {
-//                    public void run() {
-//                        Calendar calendar = Calendar.getInstance();
-//                       String nowDate = mSimpleDataFormat.format(calendar.getTime());
-//                       // 時刻表示をするTextView
-//                      ((TextView) findViewById(R.id.clock)).setText(nowDate);
-//                  }
-//               });}
-//        },0,1000);
-   }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // 定期実行をcancelする
-        if (mTimer != null) {
-            mTimer.cancel();
-            mTimer = null;
+            changeFragment(MainFragment.class);
+
+
+
+
         }
-    }
+
+
+
+
+
+
+
+
+
+
+
     public void onClick(View v) {
 
         if(v.getId() == R.id.home)
+
         changeFragment(HomeFragment.class);
 
 
-        else if(v.getId() == R.id.button2)
-            changeFragment(TopFragment.class);
 
-////インテントの作成
-//        Intent intent = new Intent(this, home.class);
-////データをセット
-//        EditText editText = (EditText)this.findViewById(R.id.title);
-//        intent.putExtra("sendText",editText.getText().toString());
-////遷移先の画面を起動
-//        startActivity(intent);
+
     }
     public void changeFragment(Class c){
         changeFragment(R.id.fragment,c,null);
@@ -141,6 +126,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         changeFragment(KarendaFragment.class);
     }
 
+//
+    public class voice_Search extends AppCompatActivity {
+        private File[] files;
+        private ArrayList<String> songList = new ArrayList<String>();
 
-}
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
+            String sdPath = Environment.getExternalStorageDirectory().getPath();
+            files = new File(sdPath).listFiles();
+            if(files != null) {
+                for (int i = 0; i < files.length; i++) {
+                    //if (files[i].isFile() && files[i].getName().endsWith(".mp3")) {
+                    songList.add(files[i].getName());
+                    //}
+                }
+            }
+
+            ListView listView = new ListView(this);
+            setContentView(listView);
+
+            // simple_list_item_1 は、 もともと用意されている定義済みのレイアウトファイルのID
+            ArrayAdapter<String> arrayAdapter =
+                    new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, songList);
+
+            listView.setAdapter(arrayAdapter);
+        }
+    }
+
+
+
+    }
+
+
+
+
+
+
 
