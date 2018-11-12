@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/ScrollView01"
+            android:layout_width="fill_parent"
+            android:layout_height="460dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/OUTPUT"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#808080"
+                    android:gravity="center"
+                    android:text="設定"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@android:color/holo_orange_dark"
+                    android:gravity="left|center"
+                    android:text="録音"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_SaveFormat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center"
+                    android:text="保存形式" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@android:color/holo_orange_dark"
+                    android:gravity="left|center"
+                    android:text="文字"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_font"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center"
+                    android:text="フォントサイズ" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@android:color/holo_orange_dark"
+                    android:gravity="left|center"
+                    android:text="再生"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_PlaySpeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center"
+                    android:text="再生速度" />
+
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@android:color/holo_orange_dark"
+                    android:gravity="left|center"
+                    android:text="共有"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_GoogleDrive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center"
+                    android:text="GoogleDrive共有" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@android:color/holo_orange_dark"
+                    android:gravity="left|center"
+                    android:text="サインアウト"
+                    android:textColor="@android:color/background_dark"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center"
+                    android:text="トップ" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button18"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="トップ" />
+
+                <Button
+                    android:id="@+id/button17"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="ホーム" />
+
+                <Button
+                    android:id="@+id/button19"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="一覧" />
+
+                <Button
+                    android:id="@+id/button20"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="設定" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
