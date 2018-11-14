@@ -10,50 +10,58 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/musicTime"
-            android:layout_width="222dp"
-            android:layout_height="47dp"
-            android:gravity="center"
-            android:text="0:00.00/0:00.00"
-            android:textSize="24sp" />
-
-        <SeekBar
-            android:id="@+id/musicseek"
-            android:layout_width="382dp"
-            android:layout_height="18dp"
-            android:progress="0" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/stop"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@android:drawable/ic_media_pause" />
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
 
             <ImageButton
                 android:id="@+id/start"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@android:drawable/ic_media_play" />
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/saisei_state" />
 
-            <Button
+            <ImageButton
+                android:id="@+id/stop"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/pause_state" />
+
+            <!--<Button
                 android:id="@+id/search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="10dp"
                 android:layout_weight="1"
                 android:text="検索" />
 
             <TextView
                 android:id="@+id/valuetest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_weight="1" />-->
+
         </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/musicseek"
+            android:layout_width="382dp"
+            android:layout_height="25dp"
+            android:progress="0"
+            android:thumb="@drawable/seekbar" />
+
+        <TextView
+            android:id="@+id/musicTime"
+            android:layout_width="222dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="0:00.00/0:00.00"
+            android:textSize="30sp" />
+
     </LinearLayout>
 
 </FrameLayout>
