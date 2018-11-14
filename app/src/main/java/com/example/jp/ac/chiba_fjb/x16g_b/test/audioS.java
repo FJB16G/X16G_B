@@ -1,9 +1,12 @@
 package com.example.jp.ac.chiba_fjb.x16g_b.test;
 
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,27 +14,94 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class saisei extends AppCompatActivity {
+public class audioS extends AppCompatActivity {
     private MediaPlayer mediaPlayer ;
+    double maxTime = 0;
+    double nowTime = 0;
+    Looper looper = Looper.getMainLooper();
+    final Handler handler = new Handler(Looper.getMainLooper());
+    private TextView time11;
+    boolean taskrunning = false;
+    private  TextView value;
+    public SeekBar m_seek;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.saisei);
 
+
         ImageButton s_button = findViewById(R.id.start);
+        time11 = (TextView) findViewById(R.id.musicTime);
+        m_seek = findViewById(R.id.musicseek);
+        value = (TextView)findViewById(R.id.valuetest);
+
+
+        //シークバーの管理
+        m_seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                String str = String.valueOf(i);
+                value.setText(str);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                mediaPlayer.seekTo(m_seek.getProgress());
+                showTime();
+            }
+        });
 
         s_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 音楽再生
-                audioPlay();
+                if(!taskrunning){
+                    // 音楽再生
+                    taskrunning = true;
+                    audioPlay();
+
+                    m_seek.setMax(mediaPlayer.getDuration());
+                    showTime();
+
+                    //0.1秒毎にループ
+                    int loopTime = 100;
+                    //タイマー生成
+                    final Timer timer = new Timer(false);
+                    //秒数更新
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (taskrunning){
+                                        showTime();
+                                    }else{
+                                        timer.cancel();
+                                    }
+                                }
+                            });
+                        }
+                    },0,loopTime);
+                }
             }
         });
+
         // 音楽停止ボタン
         ImageButton buttonStop = findViewById(R.id.stop);
 
@@ -41,10 +111,27 @@ public class saisei extends AppCompatActivity {
             public void onClick(View v) {
                 if (mediaPlayer != null) {
                     // 音楽停止
-                    audioStop();
+                    audioPause();
+                    taskrunning=false;
                 }
             }
         });
+
+        Button button_search = findViewById(R.id.search);
+
+        button_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(), voice_Search.class);
+                //int requestCord = 1000;
+                //startActivityForResult(intent ,requestCord);
+                startActivity(intent);
+            }
+        });
+
+
+
+
 
     }
     private boolean audioSetup(){
@@ -73,6 +160,8 @@ public class saisei extends AppCompatActivity {
 
         return fileCheck;
     }
+
+    //再生メソッド
     private void audioPlay(){
         if(mediaPlayer == null){
             if(audioSetup()){
@@ -82,14 +171,18 @@ public class saisei extends AppCompatActivity {
                 return;
             }
         }else{
+
             // 繰り返し再生する場合
-            mediaPlayer.stop();
-            mediaPlayer.reset();
+            //mediaPlayer.stop();
+            //mediaPlayer.reset();
             // リソースの解放
-            mediaPlayer.release();
+            // mediaPlayer.release();
+
         }
+
         //再生する
         mediaPlayer.start();
+
 
         //終了を検知するリスナー
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -100,7 +193,12 @@ public class saisei extends AppCompatActivity {
             }
         });
     }
+
+    private  void audioPause(){
+        mediaPlayer.pause();
+    }
     private void audioStop() {
+        taskrunning=false;
         // 再生終了
         mediaPlayer.stop();
         // リセット
@@ -109,5 +207,14 @@ public class saisei extends AppCompatActivity {
         mediaPlayer.release();
 
         mediaPlayer = null;
+    }
+
+    private void showTime(){
+        maxTime =mediaPlayer.getDuration();
+        maxTime = maxTime/1000;
+        nowTime = mediaPlayer.getCurrentPosition();
+        nowTime = nowTime/1000;
+        time11.setText((int)Math.floor(nowTime/60)+":"+(int)Math.floor(nowTime%60)+"/"+(int)Math.floor(maxTime/60)+":"+(int)Math.floor(maxTime%60));
+        m_seek.setProgress(mediaPlayer.getCurrentPosition());
     }
 }
