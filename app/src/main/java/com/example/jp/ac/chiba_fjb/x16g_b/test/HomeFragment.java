@@ -61,8 +61,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
          mHandler = new Handler();
         Button rokuon =  view.findViewById(R.id.rokuon);
-        Button saisei =  view.findViewById(R.id.saisei);
-        saisei.setOnClickListener(this);
+
+
         rokuon.setOnClickListener(this);
 
         //
@@ -129,10 +129,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             //((MainActivity) getActivity()).changeFragment(TopFragment.class);
             MainFragment f = (MainFragment) getParentFragment();
             f.changeFragment(titleFragment.class);
-        }else if(v.getId() == R.id.saisei) {
+        //}else if(v.getId() == R.id.saisei) {
            // ((MainActivity) getActivity()).changeFragment(titleFragment.class);
-            MainFragment f = (MainFragment) getParentFragment();
-            f.changeFragment(titleFragment.class);
+            //MainFragment f = (MainFragment) getParentFragment();
+           // f.changeFragment(titleFragment.class);
         }
 
     }
