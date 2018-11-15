@@ -42,7 +42,9 @@
             android:layout_height="25dp"
             android:max="100"
             android:progress="0"
-            android:thumb="@drawable/seekbar" />
+            android:thumb="@drawable/seekbar"
+            android:progressDrawable="@drawable/seekbar_bar_saisei"
+            />
 
         <TextView
             android:id="@+id/musicTime"
