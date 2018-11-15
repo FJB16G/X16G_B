@@ -29,9 +29,9 @@ public class audioS extends AppCompatActivity {
     double nowTime = 0;
     Looper looper = Looper.getMainLooper();
     final Handler handler = new Handler(Looper.getMainLooper());
-    private TextView time11;
+    private TextView time;
     boolean taskrunning = false;
-    private  TextView value;
+    private ImageButton s_button;
     public SeekBar m_seek;
 
     @Override
@@ -40,19 +40,16 @@ public class audioS extends AppCompatActivity {
         setContentView(R.layout.saisei);
 
 
-        ImageButton s_button = findViewById(R.id.start);
-        time11 = (TextView) findViewById(R.id.musicTime);
+        s_button = findViewById(R.id.start);
+        time = (TextView) findViewById(R.id.musicTime);
         m_seek = findViewById(R.id.musicseek);
-        value = (TextView)findViewById(R.id.valuetest);
+
 
 
         //シークバーの管理
         m_seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                String str = String.valueOf(i);
-                value.setText(str);
-
             }
 
             @Override
@@ -116,21 +113,6 @@ public class audioS extends AppCompatActivity {
                 }
             }
         });
-
-        Button button_search = findViewById(R.id.search);
-
-        button_search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplication(), voice_Search.class);
-                //int requestCord = 1000;
-                //startActivityForResult(intent ,requestCord);
-                startActivity(intent);
-            }
-        });
-
-
-
 
 
     }
@@ -214,7 +196,7 @@ public class audioS extends AppCompatActivity {
         maxTime = maxTime/1000;
         nowTime = mediaPlayer.getCurrentPosition();
         nowTime = nowTime/1000;
-        time11.setText((int)Math.floor(nowTime/60)+":"+(int)Math.floor(nowTime%60)+"/"+(int)Math.floor(maxTime/60)+":"+(int)Math.floor(maxTime%60));
+        time.setText((int)Math.floor(nowTime/60)+":"+(int)Math.floor(nowTime%60)+"/"+(int)Math.floor(maxTime/60)+":"+(int)Math.floor(maxTime%60));
         m_seek.setProgress(mediaPlayer.getCurrentPosition());
     }
 }
