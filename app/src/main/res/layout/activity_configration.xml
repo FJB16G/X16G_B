@@ -21,7 +21,7 @@
                 <TextView
                     android:id="@+id/OUTPUT"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:background="#808080"
                     android:gravity="center"
                     android:text="設定"
@@ -32,7 +32,7 @@
                 <TextView
                     android:id="@+id/textView11"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="52dp"
                     android:background="@android:color/holo_orange_dark"
                     android:gravity="left|center"
                     android:text="録音"
@@ -42,14 +42,14 @@
                 <Button
                     android:id="@+id/button_SaveFormat"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="52dp"
                     android:gravity="left|center"
                     android:text="保存形式" />
 
                 <TextView
                     android:id="@+id/textView12"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="52dp"
                     android:background="@android:color/holo_orange_dark"
                     android:gravity="left|center"
                     android:text="文字"
@@ -59,32 +59,15 @@
                 <Button
                     android:id="@+id/button_font"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
                     android:gravity="left|center"
                     android:text="フォントサイズ" />
-
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:background="@android:color/holo_orange_dark"
-                    android:gravity="left|center"
-                    android:text="再生"
-                    android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/button_PlaySpeed"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left|center"
-                    android:text="再生速度" />
 
 
                 <TextView
                     android:id="@+id/textView15"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="52dp"
                     android:background="@android:color/holo_orange_dark"
                     android:gravity="left|center"
                     android:text="共有"
@@ -94,14 +77,14 @@
                 <Button
                     android:id="@+id/button_GoogleDrive"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
                     android:gravity="left|center"
-                    android:text="GoogleDrive共有" />
+                    android:text="GoogleDrive共有(ブラウザへ)" />
 
                 <TextView
                     android:id="@+id/textView16"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="52dp"
                     android:background="@android:color/holo_orange_dark"
                     android:gravity="left|center"
                     android:text="サインアウト"
@@ -111,7 +94,7 @@
                 <Button
                     android:id="@+id/button_top"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
                     android:gravity="left|center"
                     android:text="トップ" />
 
@@ -130,27 +113,21 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button18"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="トップ" />
-
-                <Button
                     android:id="@+id/button17"
-                    android:layout_width="100dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:text="ホーム" />
 
                 <Button
                     android:id="@+id/button19"
-                    android:layout_width="100dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="一覧" />
 
                 <Button
                     android:id="@+id/button20"
-                    android:layout_width="100dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="設定" />

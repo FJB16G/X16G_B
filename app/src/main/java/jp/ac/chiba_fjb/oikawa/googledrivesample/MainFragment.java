@@ -27,7 +27,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     private GoogleApiClient mGoogleApiClient;
     private int RC_SIGN_IN;
-    private View button2;
+    private View new_google;
 
 
     public MainFragment() {
@@ -43,9 +43,9 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.button).setOnClickListener(this);
-        view.findViewById(R.id.button2).setOnClickListener(this);
-        view.findViewById(R.id.button5).setOnClickListener(this);
+        view.findViewById(R.id.Sign_in).setOnClickListener(this);
+        view.findViewById(R.id.new_google).setOnClickListener(this);
+        view.findViewById(R.id.Sign_out).setOnClickListener(this);
     }
 
     // Sign-In処理
@@ -71,9 +71,9 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.button:
-                //signIn();
-
+            case R.id.Sign_in:
+                signIn();
+                
                 // インテントの生成
                 Intent intent = new Intent();
                 intent.setClassName("jp.ac.chiba_fjb.oikawa.googledrivesample", "jp.ac.chiba_fjb.oikawa.googledrivesample.ConfigrationActivity");
@@ -81,12 +81,12 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                // SubActivity の起動
                  startActivity(intent);
                 break;
-            case R.id.button2:
+            case R.id.new_google:
                 Uri uri = Uri.parse("https://accounts.google.com/signup/v2/webcreateaccount?continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Fchrome%2Fsync%2Ffinish%3Fcontinue%3Dhttps%253A%252F%252Fwww.google.co.jp%252F%26est%3DACQ6tZJU4wyjAi6JeqxRooOXhGNsbUpCufuLrSm6WTgRDfY4xickxe0IihvBm6Li_7F4MfT6soQye61WYaIm4Nck0SNk-h6ckgLb&flowName=GlifWebSignIn&flowEntry=SignUp");
-                //Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                //startActivity(intent);
+                Intent intent2 = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent2);
                 break;
-            case R.id.button5:
+            case R.id.Sign_out:
                 GoogleDrive drive =((MainActivity)getActivity()).getDrive();
                 drive.resetAccount();
                 Toast toast2 = Toast.makeText(getActivity(), "サインアウトしました。", Toast.LENGTH_LONG);

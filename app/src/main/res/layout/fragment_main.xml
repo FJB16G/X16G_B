@@ -16,14 +16,14 @@
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="284dp"
-            app:srcCompat="@drawable/mom02" />
+            app:srcCompat="@drawable/mom4" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/Sign_in"
             android:layout_width="218dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
@@ -38,7 +38,7 @@
             android:layout_height="20dp" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/Sign_out"
             android:layout_width="218dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
@@ -52,7 +52,7 @@
             android:layout_height="20dp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/new_google"
             android:layout_width="218dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
