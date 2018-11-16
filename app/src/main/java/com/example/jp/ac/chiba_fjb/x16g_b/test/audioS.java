@@ -34,11 +34,11 @@ public class audioS extends AppCompatActivity {
     private ImageButton s_button;
     public SeekBar m_seek;
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.saisei);
-
 
         s_button = findViewById(R.id.start);
         time = (TextView) findViewById(R.id.musicTime);
@@ -64,6 +64,7 @@ public class audioS extends AppCompatActivity {
             }
         });
 
+        //スタートボタン処理
         s_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +114,7 @@ public class audioS extends AppCompatActivity {
                 }
             }
         });
+
 
 
     }
