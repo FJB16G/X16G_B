@@ -76,7 +76,9 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
 
     }
-
+    public Fragment changeFragment(Class c,Bundle bundle) {
+        return changeFragment(R.id.fragment_sub, c, bundle);
+    }
     public Fragment changeFragment(Class c) {
         return changeFragment(R.id.fragment_sub, c, null);
     }

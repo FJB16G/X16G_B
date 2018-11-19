@@ -7,11 +7,13 @@ import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -28,7 +30,7 @@ import java.util.TimerTask;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class HomeFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
     private File[] files;
     private ArrayList<String> songList = new ArrayList<String>();
 
@@ -37,7 +39,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private Handler mHandler;
     private static SimpleDateFormat mSimpleDataFormat = new SimpleDateFormat("yyyy年　MM月dd日　HH:mm:ss");
     private ListView listView;
-
+    ArrayAdapter<String> arrayList;
     public HomeFragment() {
 
 //
@@ -59,12 +61,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 //        view.findViewById(R.id.home).setOnClickListener(this);
 //        getView().findViewById(R.id.button4);
 
+//        ListView listView = (ListView)view.findViewById(R.id.music_list);
+
+
+
+
          mHandler = new Handler();
         Button rokuon =  view.findViewById(R.id.rokuon);
-
-
         rokuon.setOnClickListener(this);
-
         //
         String sdPath = Environment.getExternalStorageDirectory().getPath();
         files = new File(sdPath).listFiles();
@@ -77,6 +81,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         }
 
+
         ListView listView = (ListView)view.findViewById(R.id.music_list);
 
         // simple_list_item_1 は、 もともと用意されている定義済みのレイアウトファイルのID
@@ -87,10 +92,28 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
 
 
+
+
+        // セルを選択されたら詳細画面フラグメント呼び出す
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("selected",position);
+                ((MainFragment)HomeFragment.this.getParentFragment()).changeFragment(titleFragment.class,bundle);
+
+
     }
 
 
-    @Override
+
+
+});
+        }
+
+
+
+            @Override
     public void onResume() {
         super.onResume();
         mTimer = new Timer();
@@ -121,6 +144,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+
         if(v.getId() == R.id.home) {
             //getView().findViewById(R.id.button3);
             ((MainActivity) getActivity()).changeFragment(HomeFragment.class);
@@ -133,9 +157,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
            // ((MainActivity) getActivity()).changeFragment(titleFragment.class);
             //MainFragment f = (MainFragment) getParentFragment();
            // f.changeFragment(titleFragment.class);
+
+
+
         }
 
+
     }
+
+
+
 
 //    public class voice_Search extends AppCompatActivity {
 //        private File[] files;
@@ -167,6 +198,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 //    }
 
     private void setContentView(ListView listView) {
+    }
+
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 }
 
