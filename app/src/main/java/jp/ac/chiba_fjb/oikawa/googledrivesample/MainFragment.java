@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import jp.ac.chiba_fjb.oikawa.googledrivesample.Libs.GoogleDrive;
 
@@ -28,6 +32,8 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     private GoogleApiClient mGoogleApiClient;
     private int RC_SIGN_IN;
     private View new_google;
+    boolean swt = false;
+    GoogleDrive mDriveTest;
 
 
     public MainFragment() {
@@ -49,9 +55,11 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     }
 
     // Sign-In処理
-    private void signIn() {
+    private boolean signIn() {
+
         //ランタイムパーミッションの許可が下りた後の処理
         final GoogleDrive drive =((MainActivity)getActivity()).getDrive();
+
         drive.setOnConnectedListener(new GoogleDrive.OnConnectListener() {
             @Override
             public void onConnected(boolean flag) {
@@ -61,31 +69,43 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                 }
             }
         });
+
         drive.connect();
+        mDriveTest = drive;
+        return  swt;
     }
 
-    /**
-     *
-     */
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.Sign_in:
-                signIn();
-                
-                // インテントの生成
-                Intent intent = new Intent();
+                boolean sw2=false;
+                sw2=signIn();
+
+                final Intent intent = new Intent();
+                final Timer timer = new Timer();
                 intent.setClassName("jp.ac.chiba_fjb.oikawa.googledrivesample", "jp.ac.chiba_fjb.oikawa.googledrivesample.ConfigrationActivity");
 
-               // SubActivity の起動
-                 startActivity(intent);
+               TimerTask timerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                        if (mDriveTest.aname.equals("set")) {
+                            startActivity(intent);
+                            timer.cancel();
+                        }
+                    }
+                };
+                //タイマー開始処理
+                timer.schedule(timerTask,0,500);
                 break;
+
             case R.id.new_google:
                 Uri uri = Uri.parse("https://accounts.google.com/signup/v2/webcreateaccount?continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Fchrome%2Fsync%2Ffinish%3Fcontinue%3Dhttps%253A%252F%252Fwww.google.co.jp%252F%26est%3DACQ6tZJU4wyjAi6JeqxRooOXhGNsbUpCufuLrSm6WTgRDfY4xickxe0IihvBm6Li_7F4MfT6soQye61WYaIm4Nck0SNk-h6ckgLb&flowName=GlifWebSignIn&flowEntry=SignUp");
                 Intent intent2 = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent2);
                 break;
+
             case R.id.Sign_out:
                 GoogleDrive drive =((MainActivity)getActivity()).getDrive();
                 drive.resetAccount();

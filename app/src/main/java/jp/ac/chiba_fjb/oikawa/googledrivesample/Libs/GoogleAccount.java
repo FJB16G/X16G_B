@@ -22,6 +22,7 @@ import java.util.Arrays;
  */
 
 public class GoogleAccount {
+    public String aname="a";
     private static final int REQUEST_ACCOUNT_PICKER = 998;
     private static final int REQUEST_AUTHORIZATION = 999;
     private static final String EXTRA_NAME = "SCRIPT_INFO";
@@ -63,11 +64,15 @@ public class GoogleAccount {
         mAccountName = null;
         mCredential.setSelectedAccountName(null);
         mCredential.setSelectedAccount(null);
+
+        //fjb
+        aname="a";
     }
     public void requestAccount(){
         //ユーザ選択
-        if(mAccountName==null&& mContext instanceof Activity)
-            ((Activity)mContext).startActivityForResult(mCredential.newChooseAccountIntent(),REQUEST_ACCOUNT_PICKER);
+        if(mAccountName==null && mContext instanceof Activity) {
+            ((Activity) mContext).startActivityForResult(mCredential.newChooseAccountIntent(), REQUEST_ACCOUNT_PICKER);
+        }
         else
             call();
     }
@@ -85,6 +90,9 @@ public class GoogleAccount {
                     SharedPreferences.Editor editor = settings.edit();
                     editor.putString(PREF_ACCOUNT_NAME, mAccountName);
                     editor.apply();
+
+                    //fjb
+                    aname="set";
                 }else{
                     requestAccount();
                 }
@@ -97,10 +105,12 @@ public class GoogleAccount {
             // 処理
         }
         else if(requestCode == REQUEST_AUTHORIZATION) {
-            if (resultCode == Activity.RESULT_OK)
-                call();			//実行要求
-            else
-                onError();	//実行不能時の処理
+            if (resultCode == Activity.RESULT_OK) {
+                call();            //実行要求
+            }
+            else {
+                onError();    //実行不能時の処理
+            }
         }
     }
     protected void exception(Exception e){
@@ -121,7 +131,6 @@ public class GoogleAccount {
         } else if(e instanceof GoogleAuthIOException ) {
             //登録系エラー
             onError();
-            Log.e("Google認証","コンソール登録エラー");
             e.printStackTrace();
         }else{
             onError();
