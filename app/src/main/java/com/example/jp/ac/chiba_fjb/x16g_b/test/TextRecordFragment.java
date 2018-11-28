@@ -72,7 +72,7 @@ class FilesAdapter extends RecyclerView.Adapter implements View.OnClickListener 
     }
 }
 
-public class RecordFragment extends Fragment implements View.OnClickListener, MediaRecorder.OnInfoListener {
+public class TextRecordFragment extends Fragment implements View.OnClickListener, MediaRecorder.OnInfoListener {
 
     private Timer mTimer;
 
