@@ -1,36 +1,72 @@
 package com.example.jp.ac.chiba_fjb.x16g_b.test;
 
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.io.File;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView mTextMessage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.voicetext);
-        // 表示内容の切替え
-        final ImageView button = (ImageView) findViewById(R.id.soundButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            int start = 1;
-            @Override
-            public void onClick(View view) {
-                if(start == 1){
-                    button.setImageResource(R.drawable.pause);
-                    start = 0;
-                }else {
-                    button.setImageResource(R.drawable.start);
-                    start = 1;
-                }
-            }
-        });
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.activity_main);
+
+        changeFragment(MainFragment.class);
+
+    }
+    
+    public void onClick(View v) {
+
+        if(v.getId() == R.id.home)
+
+            changeFragment(HomeFragment.class);
+
+    }
+    public void changeFragment(Class c){
+        changeFragment(R.id.fragment,c,null);
     }
 
 
+    public void changeFragment(int id,Class c){
+        changeFragment(id,c,null);
+    }
 
+    public void changeFragment(int id,Class c,Bundle budle){
+        try {
+            Fragment f = (Fragment) c.newInstance();
+            if(budle != null)
+                f.setArguments(budle);
+            else
+                f.setArguments(new Bundle());
+
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(id,f);
+            ft.addToBackStack(null);
+            ft.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        changeFragment(KarendaFragment.class);
+    }
 }
-
-

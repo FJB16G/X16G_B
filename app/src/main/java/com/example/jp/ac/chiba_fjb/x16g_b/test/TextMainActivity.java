@@ -18,7 +18,7 @@ public class TextMainActivity extends AppCompatActivity {
             @Override
             public void onResult() {
                 //パーミッション設定完了後の初期化処理を入れる
-                changeFragment(RecordFragment.class);
+                changeFragment(TextRecordFragment.class);
 
             }
         });
