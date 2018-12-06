@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.test;
+package com.example.jp.ac.chiba_fjb.x16g_b.a;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.widget.EditText;
 
-public class VoiceCustomDialogFlagment extends DialogFragment {
+public class VoiceAllspaceDailogFlagment extends DialogFragment {
 
     // ダイアログが生成された時に呼ばれるメソッド ※必須
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class VoiceCustomDialogFlagment extends DialogFragment {
         // タイトル設定
         dialogBuilder.setTitle("録音データ名設定");
         // 表示する文章設定
-        dialogBuilder.setMessage("録音データ名を入力してください");
+        dialogBuilder.setMessage("データ名が空白です。再度入力してください");
 
         // 入力フィールド作成
         final EditText editText = new EditText(getActivity());
@@ -27,12 +27,12 @@ public class VoiceCustomDialogFlagment extends DialogFragment {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                    // editTextの内容を元画面に反映する
-                    // editTextから値を取得
-                    String returnValue = editText.getText().toString();
-                    // MainActivityのインスタンスを取得
-                    VoiceMainActivity voiceMainActivity = (VoiceMainActivity) getActivity();
-                    voiceMainActivity.setTextView(returnValue);
+                // editTextの内容を元画面に反映する
+                // editTextから値を取得
+                String returnValue = editText.getText().toString();
+                // MainActivityのインスタンスを取得
+                VoiceMainActivity voiceMainActivity = (VoiceMainActivity) getActivity();
+                voiceMainActivity.setTextView(returnValue);
 
 
             }
@@ -43,11 +43,17 @@ public class VoiceCustomDialogFlagment extends DialogFragment {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // 何もしないで閉じる
+                // editTextの内容を元画面に反映する
+                // editTextから値を取得
+                String returnValue = editText.getText().toString();
+                // MainActivityのインスタンスを取得
+                VoiceMainActivity voiceMainActivity = (VoiceMainActivity) getActivity();
+                voiceMainActivity.setTextView(returnValue);
             }
         });
 
         // dialogBulderを返す
         return dialogBuilder.create();
     }
+
 }

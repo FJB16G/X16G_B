@@ -1,22 +1,14 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.test;
+package com.example.jp.ac.chiba_fjb.x16g_b.a;
 
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import java.io.File;
-import java.util.ArrayList;
+import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
 
 public class MainActivity extends AppCompatActivity {
 

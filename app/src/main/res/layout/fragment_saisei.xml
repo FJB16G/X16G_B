@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.example.jp.ac.chiba_fjb.x16g_b.a.MainActivity">
 
     <!-- TODO: Update blank fragment layout -->
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -18,30 +18,21 @@
             android:orientation="vertical">
 
 
-            <LinearLayout
+            <EditText
+                android:id="@+id/voice_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/musicTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                >
-
-                <ImageButton
-                    android:id="@+id/start"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/saisei_state" />
-
-                <ImageButton
-                    android:id="@+id/stop"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/pause_state" />
-
-
-            </LinearLayout>
+                android:text="0:00.00/0:00.00"
+                android:textSize="30sp" />
 
             <SeekBar
                 android:id="@+id/musicseek"
@@ -51,13 +42,36 @@
                 android:progress="0"
                 android:thumb="@drawable/seekbar" />
 
-            <TextView
-                android:id="@+id/musicTime"
-                android:layout_width="222dp"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="137dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="0:00.00/0:00.00"
-                android:textSize="30sp" />
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/start"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/saisei_state" />
+
+                <ImageButton
+                    android:id="@+id/stop"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/pause_state" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:text="保存" />
 
         </LinearLayout>
 

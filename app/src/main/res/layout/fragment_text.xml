@@ -4,7 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              tools:context=".TextFragment">
+              tools:context="com.example.jp.ac.chiba_fjb.x16g_b.a.TextFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <EditText

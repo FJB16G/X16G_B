@@ -1,9 +1,11 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.test;
+package com.example.jp.ac.chiba_fjb.x16g_b.a;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
 
 public class TextMainActivity extends AppCompatActivity {
     TextPermission mTextPermission;

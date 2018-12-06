@@ -15,13 +15,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
-import com.example.jp.ac.chiba_fjb.x16g_b.test.VoiceAllspaceDailogFlagment;
-import com.example.jp.ac.chiba_fjb.x16g_b.test.VoiceCustomDialogFlagment;
-import com.example.jp.ac.chiba_fjb.x16g_b.test.VoiceNextDialogFlagment;
+import com.example.jp.ac.chiba_fjb.x16g_b.a.Text_SpeechText;
+import com.google.cloud.speech.v1.RecognizeResponse;
+import com.google.cloud.speech.v1.SpeechRecognitionAlternative;
+import com.google.cloud.speech.v1.SpeechRecognitionResult;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -41,12 +47,59 @@ public class RokuonFragment extends Fragment {
     private Handler handler = new Handler();
     private long delay, period;
     private int count;
+    String Filename ;
     private SimpleDateFormat dataFormat =
             new SimpleDateFormat("mm:ss.SS", Locale.JAPAN);
     private Button s_button ;
     private Button e_button ;
-
+    private String path ;
     private long startTime;
+
+
+
+
+    Text_SpeechText.OnSpeechListener txs = new Text_SpeechText.OnSpeechListener() {
+        @Override
+        public void OnSpeech(RecognizeResponse response) {
+
+            if(response == null){
+
+            }else{
+                // SDカードのディレクトリ
+                File dir = Environment.getExternalStorageDirectory();
+                // アプリ名で
+                File appDir2 = new File(dir, "Text");
+                // ディレクトリを作る
+                if (!appDir2.exists()) appDir2.mkdir();
+
+                String name2 = Filename;
+                String path2 = new File(appDir2, name2).getAbsolutePath();
+
+                try {
+                    FileOutputStream os = new FileOutputStream(path2+".txt");
+                    OutputStreamWriter osw = new OutputStreamWriter(os,"UTF-8");
+                    List<SpeechRecognitionResult> results = response.getResultsList();
+                    for (SpeechRecognitionResult result : results) {
+                        // There can be several alternative transcripts for a given chunk of speech. Just use the
+                        // first (most likely) one here.
+                        SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
+                        //editText.append(alternative.getTranscript());
+                        osw.write(alternative.getTranscript());
+                    }
+                    osw.flush();
+                    osw.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }
+    };
 
     public RokuonFragment() {
         // Required empty public constructor
@@ -81,7 +134,7 @@ public class RokuonFragment extends Fragment {
 
                 if (isRecording) return;
                 mTextView.setText(dataFormat.format(0));
-                String Filename = mEditText.getText().toString();
+                Filename = mEditText.getText().toString();
                 if (null != timer) {
 
                     timer.cancel();
@@ -121,7 +174,7 @@ public class RokuonFragment extends Fragment {
                 // ファイル名
                 String name = Filename + ".wav";
                 // 出力ファイルのパス
-                String path = new File(appDir, name).getAbsolutePath();
+                path = new File(appDir, name).getAbsolutePath();
 
                 mRecorder = new MediaRecorder();
                 // 入力ソースにマイクを指定
@@ -172,6 +225,10 @@ public class RokuonFragment extends Fragment {
                 // 解放
                 mRecorder.release();
                 isRecording = false;
+
+                //書き起こし画面へ投げる
+
+               Text_SpeechText.convert(getContext(),path,txs);
            }
        });
 
@@ -187,5 +244,6 @@ public class RokuonFragment extends Fragment {
     }
 
 
-    }
+
+}
 

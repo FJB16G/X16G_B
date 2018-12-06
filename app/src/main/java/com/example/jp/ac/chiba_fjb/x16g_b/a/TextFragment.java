@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.test;
+package com.example.jp.ac.chiba_fjb.x16g_b.a;
 
 
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
 import com.google.cloud.speech.v1.RecognizeResponse;
 import com.google.cloud.speech.v1.SpeechRecognitionAlternative;
 import com.google.cloud.speech.v1.SpeechRecognitionResult;
@@ -111,8 +112,6 @@ public class TextFragment extends Fragment implements Text_SpeechText.OnSpeechLi
             dialog.show(flagmentManager,"sample");
             return;
         }
-
-
 
         // 現在ストレージが書き込みできるかチェック
         textView = getActivity().findViewById(R.id.text_view);

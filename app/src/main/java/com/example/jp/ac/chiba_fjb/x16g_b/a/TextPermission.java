@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.test;
+package com.example.jp.ac.chiba_fjb.x16g_b.a;
 
 import android.app.Activity;
 import android.content.pm.PackageInfo;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class VoicePermission {
+public class TextPermission {
     public static interface ResultListener{
         public void onResult();
     }
@@ -50,3 +50,4 @@ public class VoicePermission {
 
     }
 }
+

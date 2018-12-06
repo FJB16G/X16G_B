@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.test;
+package com.example.jp.ac.chiba_fjb.x16g_b.a;
 
 import android.app.Activity;
 import android.media.MediaRecorder;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
 
 import java.io.File;
 import java.io.IOException;

@@ -5,6 +5,7 @@ import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
@@ -12,6 +13,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -20,9 +23,18 @@ import android.support.v4.app.Fragment;
 
 import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -35,10 +47,12 @@ public class SaiseiFragment extends Fragment {
     Looper looper = Looper.getMainLooper();
     final Handler handler = new Handler(Looper.getMainLooper());
     private TextView time;
+    boolean one;
     boolean taskrunning = false;
     private ImageButton s_button;
     public SeekBar m_seek;
-
+    private EditText e_text;
+    private Button h_button;
 
     public SaiseiFragment() {
         // Required empty public constructor
@@ -56,14 +70,43 @@ public class SaiseiFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+            one = false;
 
             s_button = view.findViewById(R.id.start);
+            h_button = view.findViewById(R.id.save);
             time = (TextView) view.findViewById(R.id.musicTime);
             m_seek = view.findViewById(R.id.musicseek);
+            audioPlay();
+            m_seek.setMax(mediaPlayer.getDuration());
+            showTime();
+
+            Bundle args2 = getArguments();
+            String text_name = args2.getString("path");
+            text_name=text_name.replace(".wav",".txt");
+            final String text_name2 =Environment.getExternalStorageDirectory().getPath()+"/Text/"+text_name;
+            e_text = view.findViewById(R.id.voice_text);
+
+        try {
+            FileInputStream fis = new FileInputStream(text_name2);
+            InputStreamReader isr = new InputStreamReader(fis,"UTF-8");
+            BufferedReader reader = new BufferedReader(isr);
+            String str = "";
+            String c;
+            while((c = reader.readLine())!=null) {
+                str +=c;
+            }
+            e_text.setText(str);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
-            //シークバーの管理
+        //シークバーの管理
             m_seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -132,6 +175,24 @@ public class SaiseiFragment extends Fragment {
                 }
             });
 
+            //保存ボタン
+
+        h_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    FileOutputStream outStream = new FileOutputStream(text_name2);
+                    OutputStreamWriter writer = new OutputStreamWriter(outStream);
+                    writer.write(e_text.getText().toString());
+                    writer.flush();
+                    writer.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         }
 
@@ -145,14 +206,12 @@ public class SaiseiFragment extends Fragment {
             args.getString("path");
 
             //音楽ファイル名, あるいはパス
-            String filePath = args.getString("path");;
+            String filePath = Environment.getExternalStorageDirectory().getPath()+"/Voice/"+args.getString("path");;
 
             // assetsから mp3 ファイルを読み込み
-            try (AssetFileDescriptor afdescripter = getActivity().getAssets().openFd(filePath);) {
+            try{
                 // MediaPlayerに読み込んだ音楽ファイルを指定
-                mediaPlayer.setDataSource(afdescripter.getFileDescriptor(),
-                        afdescripter.getStartOffset(),
-                        afdescripter.getLength());
+                mediaPlayer.setDataSource(filePath);
                 // 音量調整を端末のボタンに任せる
                 getActivity().setVolumeControlStream(AudioManager.STREAM_MUSIC);
                 mediaPlayer.prepare();
@@ -182,19 +241,23 @@ public class SaiseiFragment extends Fragment {
                 // mediaPlayer.release();
 
             }
+            if (one){
+                //再生する
+                mediaPlayer.start();
 
-            //再生する
-            mediaPlayer.start();
 
+                //終了を検知するリスナー
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        Log.d("debug", "end of audio");
+                        audioStop();
+                    }
+                });
+            }else{
+                one = true;
+            }
 
-            //終了を検知するリスナー
-            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    Log.d("debug", "end of audio");
-                    audioStop();
-                }
-            });
         }
 
         private void audioPause() {
@@ -203,6 +266,7 @@ public class SaiseiFragment extends Fragment {
 
         private void audioStop() {
             taskrunning = false;
+
             // 再生終了
             mediaPlayer.stop();
             // リセット

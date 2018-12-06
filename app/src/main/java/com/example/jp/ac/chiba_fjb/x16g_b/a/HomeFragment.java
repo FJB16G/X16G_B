@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.test;
+package com.example.jp.ac.chiba_fjb.x16g_b.a;
 
 
 import android.os.Bundle;
@@ -6,8 +6,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -68,14 +68,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Adap
         Button rokuon = view.findViewById(R.id.rokuon);
         rokuon.setOnClickListener(this);
 
-        String sdPath = Environment.getExternalStorageDirectory().getPath();
+        String sdPath = Environment.getExternalStorageDirectory().getPath()+"/Voice";
         files = new File(sdPath).listFiles();
         ArrayList<String> arrayList = new ArrayList<>();
         if(files != null) {
             for (int i = 0; i < files.length; i++) {
-                //if (files[i].isFile() && files[i].getName().endsWith(".wav")) {
+                if (files[i].isFile() && files[i].getName().endsWith(".wav")) {
                     songList.add(files[i].getName());
-               // }
+                }
             }
         }
 
@@ -91,10 +91,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Adap
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Log.d(TAG, songList.get(position));
                 //受け渡す値を格納
             Bundle bundle = new Bundle();
             //songList.get(position)
-            bundle.putString("path","sample.mp3");
+            bundle.putString("path", songList.get(position));
                 //再生画面に遷移
                 ((MainFragment)HomeFragment.this.getParentFragment()).changeFragment(SaiseiFragment.class,bundle);
              }
