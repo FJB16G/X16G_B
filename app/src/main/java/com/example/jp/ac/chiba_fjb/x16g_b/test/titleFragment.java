@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.a;
+package com.example.jp.ac.chiba_fjb.x16g_b.test;
 
 
 import android.os.Bundle;
@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
 
 
 /**

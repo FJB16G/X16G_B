@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.a;
+package com.example.jp.ac.chiba_fjb.x16g_b.test;
 
 import android.content.Context;
 import android.os.Handler;

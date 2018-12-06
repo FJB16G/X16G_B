@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.jp.ac.chiba_fjb.x16g_b.a.TextMainActivity">
+    tools:context="com.example.jp.ac.chiba_fjb.x16g_b.test.TextMainActivity">
 
 
     <FrameLayout

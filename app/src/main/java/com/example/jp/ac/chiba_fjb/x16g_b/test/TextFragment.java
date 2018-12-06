@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.a;
+package com.example.jp.ac.chiba_fjb.x16g_b.test;
 
 
 import android.os.Bundle;
@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
 import com.google.cloud.speech.v1.RecognizeResponse;
 import com.google.cloud.speech.v1.SpeechRecognitionAlternative;
 import com.google.cloud.speech.v1.SpeechRecognitionResult;

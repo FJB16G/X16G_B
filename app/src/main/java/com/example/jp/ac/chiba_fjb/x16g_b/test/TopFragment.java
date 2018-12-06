@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.a;
+package com.example.jp.ac.chiba_fjb.x16g_b.test;
 
 
 import android.content.Intent;
@@ -10,10 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.jp.ac.chiba_fjb.x16g_b.a.Libs.AppFinger;
-import com.example.jp.ac.chiba_fjb.x16g_b.a.Libs.GoogleDrive;
-import com.example.jp.ac.chiba_fjb.x16g_b.a.Libs.Permission;
-import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
+import com.example.jp.ac.chiba_fjb.x16g_b.test.Libs.AppFinger;
+import com.example.jp.ac.chiba_fjb.x16g_b.test.Libs.GoogleDrive;
+import com.example.jp.ac.chiba_fjb.x16g_b.test.Libs.Permission;
 
 
 /**

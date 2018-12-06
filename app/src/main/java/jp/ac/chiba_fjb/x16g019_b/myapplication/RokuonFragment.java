@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
-import com.example.jp.ac.chiba_fjb.x16g_b.a.Text_SpeechText;
+import com.example.jp.ac.chiba_fjb.x16g_b.test.Text_SpeechText;
 import com.google.cloud.speech.v1.RecognizeResponse;
 import com.google.cloud.speech.v1.SpeechRecognitionAlternative;
 import com.google.cloud.speech.v1.SpeechRecognitionResult;

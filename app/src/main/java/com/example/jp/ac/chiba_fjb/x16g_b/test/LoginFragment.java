@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.a;
+package com.example.jp.ac.chiba_fjb.x16g_b.test;
 
 
 import android.content.Intent;
@@ -12,8 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.jp.ac.chiba_fjb.x16g_b.a.Libs.GoogleDrive;
-import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
+import com.example.jp.ac.chiba_fjb.x16g_b.test.Libs.GoogleDrive;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.Timer;
@@ -82,9 +81,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 boolean sw2=false;
                 sw2=signIn();
 
-                final Intent intent = new Intent();
+                final Intent intent = new Intent(getActivity(),MainActivity.class);
                 final Timer timer = new Timer();
-                intent.setClassName("com.example.jp.ac.chiba_fjb.x16g_b.a", "MainActivity");
 
                TimerTask timerTask = new TimerTask() {
                     @Override

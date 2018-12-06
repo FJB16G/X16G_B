@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.jp.ac.chiba_fjb.x16g_b.a">
+    package="com.example.jp.ac.chiba_fjb.x16g_b.test">
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.jp.ac.chiba_fjb.x16g_b.a.Main">
+        <activity android:name="com.example.jp.ac.chiba_fjb.x16g_b.test.Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,11 +19,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.jp.ac.chiba_fjb.x16g_b.a.voice_Search"
+            android:name="com.example.jp.ac.chiba_fjb.x16g_b.test.voice_Search"
             android:label="@string/app_name" >
         </activity>
-        <activity android:name="com.example.jp.ac.chiba_fjb.x16g_b.a.ConfigrationActivity"></activity>
-        <activity android:name="com.example.jp.ac.chiba_fjb.x16g_b.a.MainActivity"></activity>
+        <activity android:name="com.example.jp.ac.chiba_fjb.x16g_b.test.ConfigrationActivity"></activity>
+        <activity android:name="com.example.jp.ac.chiba_fjb.x16g_b.test.MainActivity"></activity>
     </application>
 
 </manifest>

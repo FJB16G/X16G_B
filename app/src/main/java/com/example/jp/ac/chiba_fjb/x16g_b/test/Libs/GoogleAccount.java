@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.a.Libs;
+package com.example.jp.ac.chiba_fjb.x16g_b.test.Libs;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;

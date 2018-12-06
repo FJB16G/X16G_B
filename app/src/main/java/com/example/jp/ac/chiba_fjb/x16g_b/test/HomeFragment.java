@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.a;
+package com.example.jp.ac.chiba_fjb.x16g_b.test;
 
 
 import android.os.Bundle;
@@ -15,8 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

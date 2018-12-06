@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.a;
+package com.example.jp.ac.chiba_fjb.x16g_b.test;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,10 +7,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.example.jp.ac.chiba_fjb.x16g_b.a.Libs.AppFinger;
-import com.example.jp.ac.chiba_fjb.x16g_b.a.Libs.GoogleDrive;
-import com.example.jp.ac.chiba_fjb.x16g_b.a.Libs.Permission;
-import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
+import com.example.jp.ac.chiba_fjb.x16g_b.test.Libs.AppFinger;
+import com.example.jp.ac.chiba_fjb.x16g_b.test.Libs.GoogleDrive;
+import com.example.jp.ac.chiba_fjb.x16g_b.test.Libs.Permission;
 
 
 //https://console.cloud.google.com/

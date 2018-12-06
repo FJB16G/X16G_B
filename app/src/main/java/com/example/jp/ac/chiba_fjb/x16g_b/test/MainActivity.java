@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.a;
+package com.example.jp.ac.chiba_fjb.x16g_b.test;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,8 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
-
-import com.example.jp.ac.chiba_fjb.x16g_b.test.R;
 
 public class MainActivity extends AppCompatActivity {
 

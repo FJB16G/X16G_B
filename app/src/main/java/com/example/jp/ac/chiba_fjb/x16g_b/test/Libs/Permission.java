@@ -1,4 +1,4 @@
-package com.example.jp.ac.chiba_fjb.x16g_b.a.Libs;
+package com.example.jp.ac.chiba_fjb.x16g_b.test.Libs;
 
 /**
  * Created by oikawa on 2017/11/08.
